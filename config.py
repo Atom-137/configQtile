@@ -211,7 +211,7 @@ screens = [
                 ),
                 widget.TextBox("Arch Linux"),
                 widget.TextBox("This is Sempiternal  ?/",foreground = "#d75f5f"),
-                widget.TextBox("Administratori"),
+                widget.TextBox("Administrator"),
                 # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
