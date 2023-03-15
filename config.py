@@ -24,10 +24,11 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from libqtile import bar, layout, widget
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
-from libqtile.lazy import lazy
-from libqtile.utils import guess_terminal
+from libqtile           import bar, layout, widget
+from libqtile.config    import Click, Drag, Group, Key, Match, Screen
+from libqtile.lazy      import lazy
+from libqtile.utils     import guess_terminal
+from spotify            import Spotify
 
 mod = "mod4"
 #terminal = guess_terminal()
@@ -75,6 +76,13 @@ keys = [
     Key([mod, "control"], "r", lazy.reload_config(),      desc="Reload the config"),
     
    
+    Key(['mod1'], "p",  lazy.spawn("playerctl play-pause")),
+    Key(['mod1'], "d",  lazy.spawn("playerctl next")),
+    Key(['mod1'], "a",  lazy.spawn("playerctl previous")),
+    Key(['mod1'], "w",  lazy.spawn("pamixer -i 5")),
+    Key(['mod1'], "s",  lazy.spawn("pamixer -d 5")),
+
+    
    
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
@@ -98,7 +106,7 @@ groups = []
 # # FOR QWERTY KEYBOARDS
 group_names = ["0","1", "2", "3", "4", "5", "6", "7", "8", "9"]
 # # group_labels = ["", "", "", "", "", "", "", "", "", "",]
-group_labels = ["", "", "", " ", "4", "5", "6", "7", "8", "9"]
+group_labels = ["", "", "", " ", "", "5", "6", "7", "8", "9"]
 
 # FOR QWERTY KEYBOARDS
 # group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0",]
@@ -209,15 +217,16 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.TextBox("Arch Linux"),
+                # widget.TextBox("Arch Linux"),
                 widget.TextBox("This is Sempiternal  ?/",foreground = "#d75f5f"),
-                widget.TextBox("Administrator"),
+                # widget.TextBox("Administrator"),
                 # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
-                widget.Systray(),
+                # widget.Systray(),
+                Spotify(),
                 widget.Clock(format="%d-%m-%Y %a %H:%M"),
-                widget.QuickExit(),
+                widget.QuickExit(default_text=''),
             ],
             24
 	        # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
