@@ -53,7 +53,7 @@ keys = [
     Key([mod], "m",     lazy.next_screen(),             desc='Next monitor'),
     Key([mod], "o",     lazy.spawn("rofi -show run")),
     Key([mod], "s",     lazy.spawn("scrot")),
-    Key([mod], "e",     lazy.spawn("thunar")),
+    Key([mod], "e",     lazy.spawn("pcmanfm")),
     Key([mod], "s",     lazy.spawn("spotify")),
     Key([mod], "space", lazy.layout.next(),             desc="Move window focus to other window"),
     
@@ -65,7 +65,6 @@ keys = [
     Key([mod, "shift"], "i", lazy.layout.shuffle_up(),      desc="Move window up"),
     Key([mod, 'shift'], "s", lazy.spawn("scrot -s")),
     Key([mod, 'shift'], "m", lazy.spawn("rofi -show")),
-    Key([mod, 'shift'], "l", lazy.spawn("betterlockscreen -l")),
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
     Key([mod, "control"], "l", lazy.layout.grow_left(),   desc="Grow window to the left"),
@@ -81,6 +80,9 @@ keys = [
     Key(['mod1'], "a",  lazy.spawn("playerctl previous")),
     Key(['mod1'], "w",  lazy.spawn("pamixer -i 5")),
     Key(['mod1'], "s",  lazy.spawn("pamixer -d 5")),
+    Key(['mod1'], "e",  lazy.spawn("setxkbmap es")),
+    Key(['mod1'], "i",  lazy.spawn("setxkbmap us")),
+    Key(['mod1'], "l",  lazy.spawn("betterlockscreen -l")),
 
     
    
@@ -203,7 +205,7 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        wallpaper = '/home/administrator/fondos/fondo3.png',
+        wallpaper = '/home/administrator/fondos/fondo3.jpg',
         wallpaper_mode = 'fill',
         bottom=bar.Bar(
             [
@@ -224,7 +226,7 @@ screens = [
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
                 # widget.Systray(),
-                Spotify(),
+                # Spotify(),
                 widget.Clock(format="%d-%m-%Y %a %H:%M"),
                 widget.QuickExit(default_text=''),
             ],
@@ -232,6 +234,10 @@ screens = [
 	        # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
+    ),
+    Screen(
+        wallpaper = '/home/administrator/fondos/fondo4.jpg',
+        wallpaper_mode = 'fill',
     )
 ]
 
