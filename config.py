@@ -55,7 +55,7 @@ keys = [
     Key([mod], "o",     lazy.spawn("rofi -show run")),
     Key([mod], "s",     lazy.spawn("scrot")),
     Key([mod], "e",     lazy.spawn("pcmanfm")),
-    Key([mod], "s",     lazy.spawn("spotify")),
+    Key([mod], "s",     lazy.spawn("spotify-launcher &")),
     Key([mod], "space", lazy.layout.next(),             desc="Move window focus to other window"),
     
     # Move windows between left/right columns or move up/down in current stack.
@@ -83,9 +83,9 @@ keys = [
     Key(['mod1'], "s",  lazy.spawn("pamixer -d 5")),
     Key(['mod1'], "e",  lazy.spawn("setxkbmap es")),
     Key(['mod1'], "i",  lazy.spawn("setxkbmap us")),
-    Key(['mod1'], "l",  lazy.spawn("betterlockscreen -l")),
+    # Key(['mod1'], "l",  lazy.spawn("dm-tool lock")),
 
-    
+    Key(['mod1'], "l",  lazy.spawn("betterlockscreen -l")),
    
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
@@ -145,41 +145,7 @@ for i in groups:
 # MOVE WINDOW TO SELECTED WORKSPACE 1-10 AND FOLLOW MOVED WINDOW TO WORKSPACE
         Key([mod, "shift"], i.name, lazy.window.togroup(i.name) , lazy.group[i.name].toscreen()),
     ])
-# groups = []
 
-
-
-# for i in range(len(group_names)):
-#     groups.append(
-#         Group(
-#             name=group_names[i],
-#             layout=group_layouts[i].lower(),
-#             label=group_labels[i],
-#         ))
-
-# for i in groups:
-#     keys.extend(
-#         [
-#             # mod1 + letter of group = switch to group
-#             Key(
-#                 [mod],
-#                 i.name,
-#                 lazy.group[i.name].toscreen(),
-#                 desc="Switch to group {}".format(i.name),
-#             ),
-#             # mod1 + shift + letter of group = switch to & move focused window to group
-#             Key(
-#                 [mod, "shift"],
-#                 i.name,
-#                 lazy.window.togroup(i.name, switch_group=True),
-#                 desc="Switch to & move focused window to group {}".format(i.name),
-#             ),
-#             # Or, use below if you prefer not to switch to that group.
-#             # # mod1 + shift + letter of group = move focused window to group
-#             # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-#             #     desc="move focused window to group {}".format(i.name)),
-#         ]
-#     )
 
 layouts = [
     layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
@@ -198,15 +164,15 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font="FreeMono Regular, Symbols Nerd Font Regular",
-    fontsize=14,
+    font="Fira Code, SymbolsNerdFont-Regular",
+    fontsize=20,
     padding=4,
 )
 extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        wallpaper = '/home/administrator/fondos/fondo3.jpg',
+        wallpaper = '/home/administrator/Fondos/fondo1.jpg',
         wallpaper_mode = 'fill',
         bottom=bar.Bar(
             [
@@ -222,22 +188,15 @@ screens = [
                 ),
                 # widget.TextBox("Arch Linux"),
                 widget.TextBox("This is Sempiternal  ?/",foreground = "#d75f5f"),
-                # widget.TextBox("Administrator"),
-                # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
-                # widget.StatusNotifier(),
-                # widget.Systray(),
-                # Spotify(),
+
                 widget.Clock(format="%d-%m-%Y %a %H:%M"),
                 widget.QuickExit(default_text=''),
             ],
             24
-	        # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
     ),
     Screen(
-        wallpaper = '/home/administrator/fondos/fondo4.jpg',
+        wallpaper = '/home/administrator/Fondos/fondo2.png',
         wallpaper_mode = 'fill',
     )
 ]
@@ -288,7 +247,7 @@ wl_input_rules = None
 wmname = "LG3D"
 
 autostart = [
-    'xrandr --output HDMI-1 --off --output VGA-1 --mode 1280x1024 --pos 0x0 --rotate left --output DP-1 --off --output DVI-D-1-1 --off --output HDMI-1-2 --primary --mode 1366x768 --pos 1024x256 --rotate normal --output DP-1-2 --off'
+    'xrandr --output HDMI-A-0 --primary --mode 2560x1440 --pos 1024x0 --rotate normal --output DisplayPort-0 --mode 1280x1024 --pos 0x0 --rotate left'
 ]
 
 for x in autostart:
